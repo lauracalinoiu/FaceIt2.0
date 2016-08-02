@@ -52,14 +52,16 @@ class ViewController: UIViewController {
   }
   
   func updateUI(){
-    switch facialExpression.eyes {
-    case .Open: faceView.eyesClosed = false
-    case .Close: faceView.eyesClosed = true
-    case .Squinting: faceView.eyesClosed = true
+    if faceView != nil{
+      switch facialExpression.eyes {
+      case .Open: faceView.eyesClosed = false
+      case .Close: faceView.eyesClosed = true
+      case .Squinting: faceView.eyesClosed = true
+      }
+      
+      faceView.eyebrowsTilt = eyebrowsDict[facialExpression.eyebrows] ?? 0.0
+      faceView.mouthCourvature = mouthCurvature[facialExpression.mouth] ?? 0.0
     }
-    
-    faceView.eyebrowsTilt = eyebrowsDict[facialExpression.eyebrows] ?? 0.0
-    faceView.mouthCourvature = mouthCurvature[facialExpression.mouth] ?? 0.0
   }
 }
 
